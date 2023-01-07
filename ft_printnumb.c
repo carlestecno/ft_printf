@@ -6,21 +6,21 @@ void	ft_print_num(unsigned int n, unsigned int tipus, int *count)
 	{
 		ft_print_num(n / tipus, tipus , count);
 		if (tipus == 16 && n % tipus > 9)
-			ft_printchar(n %= tipus + 48 + 7, count);
+			ft_printchar(n % tipus + 48 + 7, count);
 		else
-			ft_printchar(n %= tipus + 48 , count);
+			ft_printchar(n % tipus + 48 , count);
 	}
 	else
 	{
 		if (tipus == 16)
 		{
 			if (n > 9)
-				ft_printchar(n %= tipus + 48 + 7, count);
+				ft_printchar(n % tipus + 48 + 7, count);
 			else
-				ft_printchar(n %= tipus + 48 , count);
+				ft_printchar(n % tipus + 48 , count);
 		}
 		else
-			ft_printchar(n %= tipus + 48 , count);
+			ft_printchar(n % tipus + 48 , count);
 	}
 }
 
@@ -34,10 +34,10 @@ void	ft_print_integer(int num, int *count)
 	if (num >= 10)
 	{
 		ft_print_integer(num / 10, count);
-		ft_printchar((num %= 10 + 48), count);
+		ft_printchar(num % 10 + 48, count);
 	}
 	else
-		ft_printchar ((num %= 10 + 48), count);
+		ft_printchar (num % 10 + 48, count);
 }
 
 void	ft_print_i(va_list args, int *count)
