@@ -56,13 +56,10 @@ int	ft_putadress(unsigned int number,char c, int count)
 	int	var;
 
 	var = 16;
-	if (c == 'p')
+	if (c == 'p' && count == 0)
 	{
-		if (count == 0)
-		{
-			write(1, "0x", 2);
-			count += 2;
-		}
+		write(1, "0x", 2);
+		count += 2;
 	}
 	if (c == 'u')
 		var = 10;
@@ -121,7 +118,7 @@ int	main(void)
 	ptr = &number;
 	count = ft_printf("abc%c,%s,%i,%p,%u,%u,%x,%X,%%\n", 'a', "string", -12563, ptr, -1, 429546796, -200, -200);
 	printf("count = %i\n", count);	
-	count2 = printf("abc%c,%s,%i,%p,%u,%u,%X,%x,%%\n", 'a', "string", -12563, ptr, -1, 429546796, -200, -200);
+	count2 = printf("abc%c,%s,%i,%p,%u,%u,%x,%X,%%\n", 'a', "string", -12563, ptr, -1, 429546796, -200, -200);
 
 	printf("count2 = %i\n", count2);
 	return (0);
