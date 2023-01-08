@@ -63,7 +63,7 @@ int	ft_putadress(unsigned int number,char c, int count)
 	}
 	if (c == 'u')
 		var = 10;
-	if (number > var)
+	if (number >= var)
 		count = ft_putadress(number / var, c, count);	
 	number %= var;
 	if (number >= 10 && number <= 15)
