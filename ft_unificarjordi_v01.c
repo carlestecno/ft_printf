@@ -116,8 +116,6 @@ int	ft_putchar(int c)
 	int	w;
 	
 	w = write (1, &c ,1);
-	if (w != 1)
-		return (-1);
 	return (1);
 }
 
