@@ -51,26 +51,40 @@ int	ft_putinteger(int number, int count)
 	return (count);
 }
 
-int	ft_putadress(unsigned int number,char c, int count)
+int	ft_puthexa(unsigned int number,char c, int count)
 {
 	int	var;
 
 	var = 16;
-	if (c == 'p' && count == 0)
-	{
-		write(1, "0x", 2);
-		count += 2;
-	}
 	if (c == 'u')
 		var = 10;
 	if (number >= var)
-		count = ft_putadress(number / var, c, count);	
+		count = ft_puthexa(number / var, c, count);	
 	number %= var;
 	if (number >= 10 && number <= 15)
 		if (c == 'x' || c == 'p')
 			number += 39;
 		else
 			number += 7;	
+	number += 48;
+	count++;
+	write(1, &number, 1);
+	return (count);
+}
+
+int	ft_putaddress(unsigned long int number, int count)
+{
+	if (count == 0)
+	{
+		ft_putchar('0');
+		ft_putchar('x');
+		count += 2;
+	}
+	if (number >= 16)
+		count = ft_putaddress(number / 16, count);
+	number %= 16;
+	if (number >= 10 && number <= 15)
+			number += 39;
 	number += 48;
 	count++;
 	write(1, &number, 1);
@@ -98,8 +112,10 @@ int	ft_printf(char const *s, ...)
 				count += ft_putstring(va_arg(args, char *));
 			if (*s == 'd' || *s == 'i')
 				count += ft_putinteger(va_arg(args, int), 0);
-			if (*s == 'p' || *s == 'x' || *s == 'X' || *s == 'u')
-				count += ft_putadress(va_arg(args, unsigned int), *s, 0);
+			if (*s == 'x' || *s == 'X' || *s == 'u')
+				count += ft_puthexa(va_arg(args, unsigned int), *s, 0);
+			if (*s == 'p')
+				count += ft_putaddress(va_arg(args, unsigned long int), 0);
 		}
 	s++;
 	}
