@@ -35,7 +35,7 @@ int	ft_putinteger(int number, int count)
 			if (ft_putchar('-') == -1)
 				return (-1);
 			number *= -1;
-			count ++;
+			count++;
 		}
 		if (number > 9)
 			count = ft_putinteger(number / 10, count);
@@ -91,11 +91,11 @@ int	ft_putaddress(unsigned long int number, int count)
 	return (count);
 }
 
-	
 int	ft_printf(char const *s, ...)
 {
 	int	count;
 	va_list	args;
+	int	j;
 
 	count = 0;
 	va_start(args, s);
@@ -107,15 +107,28 @@ int	ft_printf(char const *s, ...)
 		{
 			s++;
 			if (*s == 'c' || *s == '%')
-				count += ft_putchar(va_arg(args, int));
+			{
+				if (*s == '%')
+					count += ft_putchar('%');
+				else
+					count += ft_putchar(va_arg(args, int));
+			}
 			else if (*s == 's')
-				count += ft_putstring(va_arg(args, char *));
+			{
+				count += ft_putstring(va_arg(args, char*));
+			}	
 			else if (*s == 'd' || *s == 'i')
+			{
 				count += ft_putinteger(va_arg(args, int), 0);
+			}
 			else if (*s == 'x' || *s == 'X' || *s == 'u')
+			{
 				count += ft_puthexa(va_arg(args, unsigned int), *s, 0);
+			}
 			else if (*s == 'p')
+			{
 				count += ft_putaddress(va_arg(args, unsigned long int), 0);
+			}
 		}
 	s++;
 	}
