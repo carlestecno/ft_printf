@@ -77,7 +77,7 @@ int	main(void)
 	number = 125;
 	number_ptr = &number;
 	count = ft_printf("la %c,%s,%i,%p,%u,%u,%X,%x,%% patata\n", 'a', "pa", -2147483647, number_ptr, -1, 429465796, -200, -200);
-	count_printf = printf("ala %c,%s,%i,%p,%u,%u,%X,%x,%% patata\n", 'a', "pa", -2147483647, number_ptr, -1, 429465796,-200, -200);
+	count_printf = printf("la %c,%s,%i,%p,%u,%u,%X,%x,%% patata\n", 'a', "pa", -2147483647, number_ptr, -1, 429465796,-200, -200);
 	printf("el count_meu es de: %i\n", count);
 	printf("el count_printf es de: %i\n", count_printf);
 	return (0);

@@ -12,7 +12,7 @@ void	ft_printchar(char c, int *count)
 	int	w;
 
 	w = write(1, &c, 1);
-	checkwrite(w);
+	checkwrite(c);
 	(*count)++;
 }
 
