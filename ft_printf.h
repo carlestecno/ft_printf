@@ -16,6 +16,7 @@ void	ft_print_x(va_list args, int *count);
 void	ft_print_X(va_list args, int *count);
 void	ft_print_p(va_list args, int *count);
 void	ft_print_hex(unsigned int n, int *count);
+void	ft_print_HEXA(unsigned int n, int *count);
 void	ft_print_num(unsigned int n, unsigned int tipus, int *count);
 void	ft_print_integer(int num, int *count);
 void	ft_print_i(va_list args, int *count);
